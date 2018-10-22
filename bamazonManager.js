@@ -58,16 +58,18 @@ function displayInventory() {
     connection.query("SELECT * FROM products", function(err, res) {
         if (err) throw err;
         console.table(res);
+        connection.end();
     })
 };
 
 function displayLowInventory() {
-    connection.query("SELECT * FROM products WHERE stock_quantity < 5", function(err, res) {
+    connection.query("SELECT * FROM products WHERE stock_quantity < 15", function(err, res) {
         if (err) throw err;
 
-        console.log("\nItems with less then 5 items in stock.\n")
+        console.log("\nItems with less then 15 items in stock.\n")
 
         console.table(res)
+        connection.end();
         })
     };
 
@@ -144,9 +146,50 @@ function addToInventory() {
 }
 
 function addNewProduct() {
-    connection.query("SELECT * FROM products", function(err, res) {
+    inquirer.prompt([
+    {
+        name: "product_name",
+        type: "input",
+        message: "Enter the name of the product you want to add"
+    },
+
+    {
+        name: "department_name",
+        type: "input",
+        message: "Which department does the product belong to?"
+    },
+    {
+        name: "price",
+        type: "input",
+        message: "What is the price of the item you want to add?"
+    },
+    {
+        name: "stock_quantity",
+        type: "input",
+        message: "What is the quantity you want to add to inventory?"
+    }
+]).then(function(input) {
+    var item = input.product;
+    var addQuantity = parseInt(input.quantity);
+    var price = parseInt(input.price);
+    var dept = input.department;
+    // console.log('User has selected: ' + JSON.stringify(input));
+    var queryStr = ("INSERT INTO products SET ?");
+
+    connection.query(queryStr, input, function(err, res, fields) {
         if (err) throw err;
-        console.table(res);
+        console.log(colors.red("Your item has been added."))
+        // if (res.length === 0) {
+        //     console.log("Error: Invalid Item ID")
+        //     addToInventory();
+        // } else {
+        //     var productData = res[0];
+        //     var updateQueryStr = 'ALTER products SET stock_quantity = ' + (productData.stock_quantity + addQuantity) + ' WHERE item_id = ' + item;
+        //     connection.query(updateQueryStr, function (err, res) {
+        //         if (err) throw err;
+        //         console.log(colors.red("Stock count for Item ID " + item + " has been updated to " + (productData.stock_quantity + addQuantity)));
+                connection.end();
+            })
     })
 };
 
