@@ -38,7 +38,7 @@ connection.connect(function(err) {
   
   })
 function start() {
-    console.log(colors.rainbow("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n"));
+    // console.log(colors.rainbow("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n"));
 
     inquirer.prompt([
 	{
@@ -47,13 +47,13 @@ function start() {
       message: "Please select an option below:\n".red,
       choices: [">>> View Products for Sale", ">>> View Low Inventory", ">>> Add to Inventory", ">>> Add New Product"],
       filter: function (value) {
-          if (value === "View Products for Sale") {
+          if (value === ">>> View Products for Sale") {
           return "sale"      
-        } else if (value === "View Low Inventory") {
+        } else if (value === ">>> View Low Inventory") {
           return "low"
-        } else if (value === "Add to Inventory") {
+        } else if (value === ">>> Add to Inventory") {
           return "add"
-        } else if (value === "Add New Product") {
+        } else if (value === ">>> Add New Product") {
           return "new"
         }
       }
