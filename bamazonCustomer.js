@@ -6,6 +6,9 @@ var itemQuantity = 0;
 var selected;
 var statement;
 var colors = require("colors");
+var figlet = require('figlet');
+
+
 
 //create the connection info for the sql database
 var connection = mysql.createConnection({
@@ -29,14 +32,25 @@ connection.connect(function(err) {
 //   start();
   // console.log("connected as: " + connection.threadId);
   console.log('\033[2J');
+  console.log(colors.rainbow("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-"));
+  figlet('Bamazon', function(err, data) {
+    if (err) {
+        console.log('Something went wrong...');
+        console.dir(err);
+        return;
+    }
+    console.log(data)
+    start();
 
-  start();
+});
 
 })
 
 function start() {
-  console.log(colors.rainbow("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-"));
-  console.log("\n" +"WELCOME TO BAMAZON" + "\n");
+
+ 
+  // console.log(colors.rainbow("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-"));
+  // console.log("\n" +"WELCOME TO BAMAZON" + "\n");
   console.log(colors.rainbow("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n"));
   inquirer.prompt ({
     name: "browse",
