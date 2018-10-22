@@ -55,14 +55,16 @@ function start() {
 
 function showItems() {
  
-  connection.query("SELECT * FROM products", function(err, res) {
+  connection.query("SELECT item_id, product_name, department_name, price FROM products", function(err, res) {
 
     // for (var i = 0; i < res.length; i++) {
       console.log("-------------------------------------------------------------------------------------".blue);
       // console.table(res)
       console.table(res);
       // console.table("Item: " + res[i].item_id + " | " + res[i].product_name + " | " + res[i].department_name + " | " + res[i].price);
+
     // }
+
     console.log("-------------------------------------------------------------------------------------".blue);
     placeOrder();
   });
@@ -129,12 +131,10 @@ function showItems() {
               connection.end();
             }
           })
-  
-            
-          // connection.end();
-        })
 
-    }
-})
-})
-    };
+        })
+      }
+    })
+  })
+
+};
