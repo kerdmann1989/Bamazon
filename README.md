@@ -5,8 +5,9 @@ Bamazon is an Amazon-like storefront using MySQL and Node.
 * node bamazonCustomer.js
 * node bamazonManager.js
 
-[Click here to view screenshots of the program](screenshots/)
-[Click here to view video walkthru] (https://drive.google.com/file/d/1ChTcws-FOMyOoU-aT2quuWIQNCxCR2hU/view)
+### View Screenshots & Video Walkthru
+* [Screenshots](screenshots/)
+* [Video Walkthru](https://drive.google.com/file/d/1AAB0ZiPewzJfdGnYjd1e7QLCGUai0hhe/view?usp=sharing "Google Drive")
 
 ### Bamazon Customer
 
@@ -20,12 +21,15 @@ Bamazon is an Amazon-like storefront using MySQL and Node.
 * View Low Inventory (allows manager to see inventory under 15)
 * Add to Inventory (allows manager to increase quantity of current inventory)
 * Add Product to Inventory (allows manager to add new products to inventory)
+
 All options connect to the SQL database to make requested changes.
 
 ### NPM Packages Used
 * Inquirer
 * Colors
 * Figlet
+* MySQL
+* Console.table
 
 
 
