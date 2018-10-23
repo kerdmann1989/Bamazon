@@ -7,7 +7,9 @@ Bamazon is an Amazon-like storefront using MySQL and Node.
 
 ### View Screenshots & Video Walkthru
 * [Screenshots](screenshots/)
-* [Video Walkthru](https://drive.google.com/file/d/1AAB0ZiPewzJfdGnYjd1e7QLCGUai0hhe/view?usp=sharing "Google Drive")
+* [Video Walkthru - bamazonCustomer.js](https://drive.google.com/file/d/1ChTcws-FOMyOoU-aT2quuWIQNCxCR2hU/view?usp=sharing "Google Drive Bamazon Customer Video")
+
+* [Video Walkthru - bamazonManager.js](https://drive.google.com/file/d/1AAB0ZiPewzJfdGnYjd1e7QLCGUai0hhe/view?usp=sharing "Google Drive Bamazon Manager Video")
 
 ### Bamazon Customer
 
