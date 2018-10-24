@@ -48,7 +48,6 @@ connection.connect(function(err) {
 
 function start() {
 
- 
   // console.log(colors.rainbow("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-"));
   // console.log("\n" +"WELCOME TO BAMAZON" + "\n");
   console.log(colors.rainbow("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n"));
@@ -58,6 +57,7 @@ function start() {
     message: "Would you like to browse available products?".blue
   }
   ).then(function(answer) {
+   
     if(answer.browse) {
       showItems();
 
@@ -71,16 +71,10 @@ function showItems() {
  
   connection.query("SELECT item_id, product_name, department_name, price FROM products", function(err, res) {
 
-    // for (var i = 0; i < res.length; i++) {
       console.log("-------------------------------------------------------------------------------------".blue);
-      // console.table(res)
-      console.table(res);
-      // console.table("Item: " + res[i].item_id + " | " + res[i].product_name + " | " + res[i].department_name + " | " + res[i].price);
-
-    // }
-
-    console.log("-------------------------------------------------------------------------------------".blue);
-    placeOrder();
+      console.table(res)
+      console.log("-------------------------------------------------------------------------------------".blue);
+      placeOrder();
   });
 }
  
@@ -117,8 +111,15 @@ function showItems() {
 
         connection.query("SELECT * FROM products WHERE item_id=" + itemID, function (err, res) {
         selected = res[0];
-
-        if (itemQuantity > selected.stock_quantity && selected.stock_quantity > 1) {
+        
+      
+        if(res.length === 0 ) {
+          console.log ("Item not found");
+          setTimeout(function(){
+            showItems()
+          }, 2000);
+       
+        }else if (itemQuantity > selected.stock_quantity && selected.stock_quantity > 1) {
         statement = "\nSorry, we only have " + selected.stock_quantity + " " + selected.product_name + " available.\n".red;
         console.log(colors.red(statement));
         placeOrder();

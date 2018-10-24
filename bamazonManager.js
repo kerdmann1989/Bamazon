@@ -38,7 +38,6 @@ connection.connect(function(err) {
   
   })
 function start() {
-    // console.log(colors.rainbow("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n"));
 
     inquirer.prompt([
 	{
